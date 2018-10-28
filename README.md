@@ -4,19 +4,19 @@ web applications in a simple and understandable way.
 
 With it, you don't need to know the HTTP protocol, or how Python communicates with JavaScript. You can use Python functions in JavaScript just like native JavaScript functions.
 
-## usage steps
+## Usage steps
 
-### step 1
+### Step 1
 install py4js package: `pip install py4js` or `pip3 install py4js`
 
-### step 2
+### Step 2
 First, create a package, named service, and then create a Python file in the package, such as `hello.py`:
 ```python
 def say_hello():
     return 'Hello World!'
 ```
 
-### step 3
+### Step 3
 create a Python file, such as `main.py`:
 ```python
 from py4js import Server
@@ -25,7 +25,7 @@ Server().run()
 ```
 Then run it(By default, the server will launch wsgiref server at port `5000`. You can also use other port and wsgi server).
 
-### step 4
+### Step 4
 create a HTML file, such as `index.html`:
 ```html
 <!DOCTYPE html>
