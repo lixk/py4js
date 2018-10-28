@@ -63,8 +63,8 @@ The server has several startup parameters that can be specified, for example:
 | js_route | the path of JavaScript for browser to load. |
 | access_control_allow_origin | default: `*` , all cross domain requests are allowed. |
 
-### Server adapter
 <span id="serverAdapter"></span>
+### Server adapter
 As the py4js server is based on Bottle, the built-in default server is based on wsgiref WSGIServer. This non-threading HTTP server may become a performance bottleneck when server load increases. 
 So it's better to use a different server that is either multi-threaded or supports asynchronous IO.
 

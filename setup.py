@@ -1,15 +1,15 @@
 from setuptools import setup
 
+with open('README.md', 'r', encoding='utf-8') as f:
+    long_description = f.read()
+
 setup(
     name="py4js",
-    version="0.0.1",
+    version="0.1.1",
     keywords=("pip", "py4js"),
     description="a fast and simple micro-framework for small web applications",
-#     long_description="""py4js is a fast and simple micro-framework for small web applications. Its goal is to enable you to develop
-# web applications in a simple and understandable way.
-#
-# With it, you don't need to know the HTTP protocol, or how Python communicates with JavaScript. You can use Python functions in JavaScript just like native JavaScript functions.
-# """,
+    long_description=long_description,
+    long_description_content_type='text/markdown',  # This is important!
     license="MIT Licence",
 
     url="https://github.com/lixk/py4js",
