@@ -58,12 +58,11 @@ The server has several startup parameters that can be specified, for example:
 | :--- | :--- |
 | host | Server address to bind to(default: `0.0.0.0`). Pass `0.0.0.0` to listens on  all services including the external one. |
 | port | Server port to bind to(default: 5000). Values below 1024 require root privileges. if port is None, server will use a random port. |
-| server | Specify the server adapter to use. For more details: [Server adapter](#serverAdapter). (default: `wsgiref`, others: `paste`/`waitress`/`gevent`/`cherrypy`/`gunicorn`.etc). |
+| server | Specify the server adapter to use. For more details: [Server adapter](#server-adapter). (default: `wsgiref`, others: `paste`/`waitress`/`gevent`/`cherrypy`/`gunicorn`.etc). |
 | service_package | A package that will be scanned by the server. All modules and public functions in the package will be loaded as service for JavaScript. Default package name is `service`, also you can change it to another name if you like. |
 | js_route | the path of JavaScript for browser to load. |
 | access_control_allow_origin | default: `*` , all cross domain requests are allowed. |
 
-<span id="serverAdapter"></span>
 ### Server adapter
 As the py4js server is based on Bottle, the built-in default server is based on wsgiref WSGIServer. This non-threading HTTP server may become a performance bottleneck when server load increases. 
 So it's better to use a different server that is either multi-threaded or supports asynchronous IO.
