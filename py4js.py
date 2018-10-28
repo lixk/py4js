@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-py4js is a fast and simple micro-framework for small web applications. It allows you to use python functions in JavaScript
-just like native JavaScript functions.
+py4js is a fast and simple micro-framework for small web applications. Its goal is to enable you to develop
+web applications in a simple and understandable way. With it, you don't need to know the HTTP protocol, or how
+Python communicates with JavaScript. You can use Python functions in JavaScript just like native JavaScript functions.
 """
 __author__ = 'Xiangkui Li'
 __license__ = 'MIT'
@@ -41,13 +42,20 @@ function executeService(serviceName, data, success, error) {
         if (xhr.readyState == 4) {
             if (xhr.status == 200) {
                 var r = eval('('+xhr.response+')');
-                if(r.code == 200){
+                if(r.code == 200 && success){
                     success(r.data);
-                } else {
+                    return;
+                } 
+                if(r.code != 200 && error) {
                     error(r.message);
+                    return;
                 }
             } else {
-                error(xhr.response);
+                if(error){
+                    error(xhr.response);
+                } else {
+                    console.error(xhr.response);
+                }
             }
         }
     }
@@ -59,16 +67,17 @@ function executeService(serviceName, data, success, error) {
 
 class Server(object):
     """
-    With this server, you can use the functions defined in the Python module in JavaScript,
-    just like using JavaScript functions.
+    With this server, you can use the functions defined in the Python module in JavaScript, just like using
+    JavaScript functions.
 
-    :param host: Server address to bind to. Pass `0.0.0.0` to listens on all interfaces including the external one.
+    :param host: Server address to bind to. Pass `0.0.0.0` to listens on all services including the external one.
     :param port: Server port to bind to. Values below 1024 require root privileges. (default: 5000)
         if port is None, server will use a random port.
     :param server: As the server is based on Bottle, please refer to {@link https://www.bottlepy.org/docs/dev/deployment.html}
-         for more details of the server adapter. (default: `wsgiref`, recommend: `paste`/`waitress`/`gevent`/`cherrypy`/`gunicorn`)
+         for more details of the server adapter.
+         (default: `wsgiref`, others: `paste`/`waitress`/`gevent`/`cherrypy`/`gunicorn`.etc)
     :param service_package: A package that will be scanned by the server. All modules and public functions
-        under the package will be loaded as service for JavaScript. Default package name is `service`,
+        in the package will be loaded as service for JavaScript. Default package name is `service`,
         also you can change it to another name if you like.
     :param js_route: the path of JavaScript for browser to load.
     :param access_control_allow_origin: default: `*` , allow all request.

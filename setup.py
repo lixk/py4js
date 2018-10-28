@@ -5,7 +5,11 @@ setup(
     version="0.0.1",
     keywords=("pip", "py4js"),
     description="a fast and simple micro-framework for small web applications",
-    long_description="py4js is a fast and simple micro-framework for small web applications. It allows you to use python functions in JavaScript just like native JavaScript functions.",
+#     long_description="""py4js is a fast and simple micro-framework for small web applications. Its goal is to enable you to develop
+# web applications in a simple and understandable way.
+#
+# With it, you don't need to know the HTTP protocol, or how Python communicates with JavaScript. You can use Python functions in JavaScript just like native JavaScript functions.
+# """,
     license="MIT Licence",
 
     url="https://github.com/lixk/py4js",
