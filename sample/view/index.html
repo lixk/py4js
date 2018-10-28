@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+    <script src="http://localhost:5000/service.js"></script>
+</head>
+<body>
+<input type="file" name="file" id="file">
+<button id="btn">upload</button>
+<script>
+    service.hello.say_hello('World', function(data){
+        alert(data);
+    });
+
+    service.user.get_by_id(1, function(data){console.log(data)});
+
+    document.querySelector('#btn').onclick = function (e) {
+        service.user.upload(document.querySelector('#file').files[0], function(data){
+            alert(data);
+        });
+    }
+</script>
+</body>
+</html>
