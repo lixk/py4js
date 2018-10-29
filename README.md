@@ -12,8 +12,14 @@ Install py4js package: `pip install py4js` or `pip3 install py4js`
 ### Step 2
 First, create a package, named service, and then create a Python file in the package, such as `hello.py`:
 ```python
-def say_hello():
-    return 'Hello World!'
+def say_hello(name):
+    """
+    say hello test
+
+    :param name:
+    :return:
+    """
+    return 'Hello %s!' % name
 ```
 
 ### Step 3
