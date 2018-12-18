@@ -17,7 +17,7 @@ import sys
 
 from bottle import request, Bottle, response
 
-JS = """//base path of the remote service 
+_JS = """//base path of the remote service 
 var basePath = "%(base_path)s";
 
 //init service function
@@ -115,7 +115,7 @@ class Server(object):
 
     def _init_js(self):
         """create JavaScript service functions"""
-        content = JS
+        content = _JS
         base_path = '{0}://{1}/'.format(request.urlparts.scheme, request.urlparts.netloc)
         content = content % {'base_path': base_path}
         content += '\n/********************** create service ****************************/\n'
